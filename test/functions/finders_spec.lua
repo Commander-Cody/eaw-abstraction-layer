@@ -147,7 +147,7 @@ test(
     function()
         local actual = eaw.environment.FindPlanet.Get_All_Planets()
 
-        assert.is_true(type(actual) == "table")
+        assert.is_true(type{name = actual} == "table")
 
         local entry = actual[1]
         assert.is.planet(entry)

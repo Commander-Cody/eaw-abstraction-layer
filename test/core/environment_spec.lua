@@ -63,13 +63,13 @@ context(
 
                 eaw.run(
                     function()
-                        Spawn_Unit(type("DUMMY"), game_object {name = "DUMMY"}, faction {name = "DUMMY"})
+                        Spawn_Unit(type{name = "DUMMY"}, game_object {name = "DUMMY"}, faction {name = "DUMMY"})
                     end
                 )
 
                 eaw.run(
                     function()
-                        Spawn_Unit(type("DUMMY"), game_object {name = "DUMMY"}, faction {name = "DUMMY"})
+                        Spawn_Unit(type{name = "DUMMY"}, game_object {name = "DUMMY"}, faction {name = "DUMMY"})
                     end
                 )
 

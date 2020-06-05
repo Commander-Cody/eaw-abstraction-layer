@@ -35,13 +35,7 @@ local function game_object(tab)
 
     obj.Get_Parent_Object = method("Get_Parent_Object")
     function obj.Get_Parent_Object.return_value()
-		return game_object {
-			name = "DummyObject",
-			owner = faction {
-                name = "DummyFaction",
-                is_human = false
-            }
-		}
+    		return tab.parent_object
     end
 
     obj.Get_Planet_Location = method("Get_Planet_Location")
@@ -55,9 +49,9 @@ local function game_object(tab)
         }
 	end
 
-	obj.Get_Position = method("Get_Position")
+  	obj.Get_Position = method("Get_Position")
 
-    local type = make_type(tab.name)
+    local type = make_type{name = tab.name}
 
     obj.Get_Type = method("Get_Type")
     function obj.Get_Type.return_value()

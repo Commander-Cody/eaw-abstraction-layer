@@ -1,7 +1,7 @@
 local metatables = require "eaw-abstraction-layer.core.metatables"
 local method = metatables.method
 
-local function type(name)
+local function type(tab)
     local obj = setmetatable({
         __eaw_type = "type"
     }, {
@@ -12,7 +12,7 @@ local function type(name)
 
     obj.Get_Name = method("Get_Name")
     function obj.Get_Name.return_value()
-        return string.upper(name)
+        return string.upper(tab.name)
     end
 
     obj.Get_Combat_Rating = method("Get_Combat_Rating")

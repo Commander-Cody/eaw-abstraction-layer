@@ -63,7 +63,7 @@ local function finders()
     local Find_Object_Type = method("Find_Object_Type")
     Find_Object_Type.expected = { "string" }
     function Find_Object_Type.return_value(name)
-        local type = make_type(name)
+        local type = make_type({name = name})
         return type
     end
 

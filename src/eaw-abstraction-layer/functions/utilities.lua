@@ -80,9 +80,13 @@ local function utilities()
         {"unit_object"},
         {"planet"},
         {"faction"},
-        {"fleet"}
+        {"fleet"},
+        {}
     }
-    function TestValid.return_value()
+    function TestValid.return_value(obj)
+        if obj and obj.Is_Valid and obj.Is_Valid() then
+          return true
+        end
         return false
     end
 

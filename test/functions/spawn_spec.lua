@@ -2,12 +2,12 @@ test(
     "When calling Spawn_Unit() -> should return table containing unit object",
     function()
         local actual = eaw.environment.Spawn_Unit(
-            eaw.types.type("DummyType"),
+            eaw.types.type{name = "DummyType"},
             eaw.types.game_object{name = "DummyPlanet"},
             eaw.types.faction{name = "DummyFaction"}
         )
 
-        assert.is_true(type(actual) == "table")
+        assert.is_true(type{name = actual} == "table")
         assert.is.unit_object(actual[1])
     end
 )
@@ -15,7 +15,7 @@ test(
 test(
     "When calling Spawn_Unit() -> type of returned unit should match requested type",
     function()
-        local expected = eaw.types.type("Expected_Type")
+        local expected = eaw.types.type{name = "Expected_Type"}
         local spawned = eaw.environment.Spawn_Unit(
             expected,
             eaw.types.game_object{name = "DummyPlanet"},
@@ -32,7 +32,7 @@ test(
     function()
         local expected = eaw.types.planet{name = "Expected_Location"}
         local spawned = eaw.environment.Spawn_Unit(
-            eaw.types.type("DummyType"),
+            eaw.types.type{name = "DummyType"},
             expected,
             eaw.types.faction{name = "DummyFaction"}
         )
@@ -47,7 +47,7 @@ test(
     function()
         local expected = eaw.types.faction{name = "Expected_Owner"}
         local spawned = eaw.environment.Spawn_Unit(
-            eaw.types.type("DummyType"),
+            eaw.types.type{name = "DummyType"},
             eaw.types.game_object{name = "DummyPlanet"},
             expected
         )

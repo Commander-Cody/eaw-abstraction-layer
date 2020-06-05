@@ -35,7 +35,7 @@ local function spawn()
             table.insert(
                 return_tab,
                 unit_object {
-                    name = type(type_name),
+                    name = type{name = type_name},
                     owner = player
                 }
             )

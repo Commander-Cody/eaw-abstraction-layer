@@ -22,7 +22,7 @@ local function faction(tab)
 
     obj.Get_ID = method("Get_ID")
     function obj.Get_ID.return_value()
-        return 1
+        return tab.id or 1
     end
 
     obj.Is_Human = method("Is_Human")
@@ -32,7 +32,7 @@ local function faction(tab)
 
     obj.Get_Tech_Level = method("Get_Tech_Level")
     function obj.Get_Tech_Level.return_value()
-        return 1
+        return tab.tech_level or 1
     end
 
     obj.Make_Ally = method("Make_Ally")
