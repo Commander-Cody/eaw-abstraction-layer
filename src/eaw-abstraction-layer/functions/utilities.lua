@@ -35,7 +35,7 @@ local function utilities()
     --TODO: Create_Thread can take any amount of additional arguments, we need real vararg support to do that
     local Create_Thread = vararg_method("Create_Thread")
     function Create_Thread.return_value()
-        return thread()
+        return 1
     end
 
     local EvaluatePerception = method("EvaluatePerception")
@@ -122,6 +122,55 @@ local function utilities()
         return obj
     end
     
+    local function Thread()
+        local thread_method = vararg_method("Thread")
+
+        function thread_method.return_value()
+            return 1
+        end
+
+        local thread_mt = {
+            __call = function(t, ...)
+                return thread_method(...)
+            end
+        }
+        
+        local obj = setmetatable({}, thread_mt)
+        
+        obj.Create = thread_method
+        
+        obj.Is_Thread_Active = method("Is_Thread_Active")
+        obj.Is_Thread_Active.expected = {
+            "number"
+        }
+        function obj.Is_Thread_Active.return_value()
+            return false
+        end
+        
+        obj.Kill = method("Kill")
+        obj.Kill.expected = {
+            "number"
+        }
+        
+        obj.Kill_All = method("Kill_All")
+        obj.Kill_All.expected = {}
+        
+        obj.Get_Name = method("Get_Name")
+        obj.Get_Name.expected = {
+            "number"
+        }
+        function obj.Get_Name.return_value()
+            return "DummyThreadName"
+        end
+        
+        obj.Get_Current_ID = method("Get_Current_ID")
+        function obj.Get_Current_ID.return_value()
+            return 1
+        end
+        
+        return obj
+    end
+    
     local Cull_Unit_List = method("Cull_Unit_List")
     Cull_Unit_List.expected = {
         "table"
@@ -145,6 +194,7 @@ local function utilities()
         TestValid = TestValid,
         ScriptExit = ScriptExit,
         GameRandom = GameRandom(),
+        Thread = Thread(),
         DebugMessage = function(...) print(string.format(...)) end,
         _CustomScriptMessage = function(file, ...) print(string.format(...)) end,
         OutputDebug = function (...) print(string.format(...)) end,
